@@ -28,9 +28,13 @@ app.get("/health", (req, res) => {
 
 // Route imports
 import authRouter from "./modules/auth/auth.routes";
+import analysisRouter from "./modules/analysis/analysis.routes";
+import userRouter from "./modules/user/user.routes";
 
 // Route declarations
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/analysis", analysisRouter);
 
 // Global Error Handler
 app.use(globalErrorHandler);

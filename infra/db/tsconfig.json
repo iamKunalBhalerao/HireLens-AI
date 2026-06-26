@@ -1,15 +1,27 @@
+// {
+//   "compilerOptions": {
+//     "module": "ESNext",
+//     "moduleResolution": "bundler",
+//     "target": "ES2023",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "types": ["node"],
+//     "outDir": "dist",
+//     "rootDir": "src",
+//     "declaration": true
+//   },
+//   "include": ["src"],
+//   "exclude": ["node_modules"]
+// }
 {
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ES2023",
-    "strict": true,
-    "esModuleInterop": true,
-    "types": ["node"],
-    "ignoreDeprecations": "6.0",
     "outDir": "dist",
-    "rootDir": "src",
-    "declaration": true
+    "rootDir": "."
   },
-  "include": ["src"]
+  "include": ["src", "generated"],
+  "exclude": ["node_modules", "dist"]
 }

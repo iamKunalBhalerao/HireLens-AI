@@ -6,8 +6,9 @@ import {
   refreshTokenController,
   getCurrentUserController,
 } from "./auth.controller";
-import { validate, signUpSchema, signInSchema } from "./auth.validations";
+import { signUpSchema, signInSchema } from "./auth.validations";
 import { authenticate } from "../../common/middleware/auth.middleware";
+import { validate } from "../../common/middleware/validate.middleware";
 
 const authRouter: Router = Router();
 

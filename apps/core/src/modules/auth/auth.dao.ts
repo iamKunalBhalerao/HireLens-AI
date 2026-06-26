@@ -3,7 +3,9 @@ import { prisma, type User, type Prisma } from "@infra/db";
 /**
  * Creates a new user in the database.
  */
-export const createUser = async (data: Prisma.UserCreateInput): Promise<User> => {
+export const createUser = async (
+  data: Prisma.UserCreateInput,
+): Promise<User> => {
   return prisma.user.create({
     data,
   });

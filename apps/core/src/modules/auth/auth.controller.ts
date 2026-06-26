@@ -10,7 +10,6 @@ import {
 import { ApiResponse } from "../../common/utils/apiResponse";
 import { UnauthorizedError } from "../../common/errors/errors";
 
-// Extend Express Request type inline for authentication context
 interface AuthenticatedRequest extends Request {
   user?: {
     id: string;
@@ -43,14 +42,14 @@ export const signUpController = async (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   try {
     const { userName, email, password } = req.body;
     const result = await signUpService({ userName, email, password });
 
     res.cookie("accessToken", result.accessToken, accessTokenOptions);
     res.cookie("refreshToken", result.refreshToken, refreshTokenOptions);
-    res
+    return res
       .status(201)
       .json(new ApiResponse(201, result, "User registered successfully"));
   } catch (error) {
@@ -66,14 +65,14 @@ export const signInController = async (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   try {
     const { email, password } = req.body;
     const result = await signInService({ email, password });
 
     res.cookie("accessToken", result.accessToken, accessTokenOptions);
     res.cookie("refreshToken", result.refreshToken, refreshTokenOptions);
-    res
+    return res
       .status(200)
       .json(
         new ApiResponse(
@@ -95,7 +94,7 @@ export const signOutController = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   try {
     const userId = req.user?.id;
     if (userId) {
@@ -104,7 +103,9 @@ export const signOutController = async (
 
     res.clearCookie("accessToken", cookieOptions);
     res.clearCookie("refreshToken", cookieOptions);
-    res.status(200).json(new ApiResponse(200, null, "Logged out successfully"));
+    return res
+      .status(200)
+      .json(new ApiResponse(200, null, "Logged out successfully"));
   } catch (error) {
     next(error);
   }
@@ -118,7 +119,7 @@ export const refreshTokenController = async (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   try {
     const oldRefreshToken = req.cookies?.refreshToken || req.body?.refreshToken;
     if (!oldRefreshToken) {
@@ -129,7 +130,7 @@ export const refreshTokenController = async (
 
     res.cookie("accessToken", result.accessToken, accessTokenOptions);
     res.cookie("refreshToken", result.refreshToken, refreshTokenOptions);
-    res
+    return res
       .status(200)
       .json(
         new ApiResponse(
@@ -151,7 +152,7 @@ export const getCurrentUserController = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   try {
     const userId = req.user?.id;
     if (!userId) {
@@ -160,7 +161,7 @@ export const getCurrentUserController = async (
 
     const result = await getCurrentUserService(userId);
 
-    res
+    return res
       .status(200)
       .json(
         new ApiResponse(200, result, "Current user retrieved successfully"),

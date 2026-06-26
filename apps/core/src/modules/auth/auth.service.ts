@@ -7,11 +7,18 @@ import {
   updateRefreshToken,
 } from "./auth.dao";
 import {
-  BadRequestError,
   ConflictError,
   NotFoundError,
   UnauthorizedError,
 } from "../../common/errors/errors";
+import {
+  SignUpInput,
+  SignInInput,
+  SignUpResponse,
+  SignInResponse,
+  RefreshTokenResponse,
+  CurrentUserResponse,
+} from "./auth.types";
 
 const ACCESS_TOKEN_SECRET =
   process.env.ACCESS_TOKEN_SECRET || "dev_access_token_secret_12345";
@@ -61,17 +68,14 @@ export const verifyRefreshToken = (token: string): { id: string } => {
 /**
  * Registers a new user with hashed password.
  */
-export const signUpService = async (data: {
-  userName: string;
-  email: string;
-  password: string;
-}) => {
+export const signUpService = async (
+  data: SignUpInput,
+): Promise<SignUpResponse> => {
   const existingUser = await findUserByEmail(data.email);
   if (existingUser) {
     throw new ConflictError("User with this email already exists");
   }
 
-  // Hash password using 12 salt rounds
   const hashedPassword = await bcrypt.hash(data.password, 12);
 
   const newUser = await createUser({
@@ -86,7 +90,6 @@ export const signUpService = async (data: {
   });
   const refreshToken = generateRefreshToken({ id: newUser.id });
 
-  // Update refresh token in DB
   await updateRefreshToken(newUser.id, refreshToken);
 
   return {
@@ -102,10 +105,9 @@ export const signUpService = async (data: {
 /**
  * Authenticates user credentials and generates access/refresh tokens.
  */
-export const signInService = async (data: {
-  email: string;
-  password: string;
-}) => {
+export const signInService = async (
+  data: SignInInput,
+): Promise<SignInResponse> => {
   const user = await findUserByEmail(data.email);
   if (!user) {
     throw new UnauthorizedError("Invalid email or password");
@@ -119,7 +121,6 @@ export const signInService = async (data: {
   const accessToken = generateAccessToken({ id: user.id, email: user.email });
   const refreshToken = generateRefreshToken({ id: user.id });
 
-  // Update refresh token in DB
   await updateRefreshToken(user.id, refreshToken);
 
   return {
@@ -143,7 +144,9 @@ export const signOutService = async (userId: string): Promise<void> => {
 /**
  * Validates a refresh token and generates a new access/refresh token pair (token rotation).
  */
-export const refreshTokenService = async (token: string) => {
+export const refreshTokenService = async (
+  token: string,
+): Promise<RefreshTokenResponse> => {
   let decoded: { id: string };
   try {
     decoded = verifyRefreshToken(token);
@@ -156,7 +159,6 @@ export const refreshTokenService = async (token: string) => {
     throw new UnauthorizedError("User not found");
   }
 
-  // Verify that the token matches the database record to prevent token reuse
   if (user.refreshToken !== token) {
     throw new UnauthorizedError("Expired or invalid refresh token");
   }
@@ -164,7 +166,6 @@ export const refreshTokenService = async (token: string) => {
   const accessToken = generateAccessToken({ id: user.id, email: user.email });
   const newRefreshToken = generateRefreshToken({ id: user.id });
 
-  // Rotate refresh token
   await updateRefreshToken(user.id, newRefreshToken);
 
   return {
@@ -181,7 +182,9 @@ export const refreshTokenService = async (token: string) => {
 /**
  * Retrieves the current user details.
  */
-export const getCurrentUserService = async (userId: string) => {
+export const getCurrentUserService = async (
+  userId: string,
+): Promise<CurrentUserResponse> => {
   const user = await findUserById(userId);
   if (!user) {
     throw new NotFoundError("User not found");
