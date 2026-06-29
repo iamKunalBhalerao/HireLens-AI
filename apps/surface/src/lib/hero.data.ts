@@ -1,4 +1,4 @@
-import { AvatarList } from "@/components/shadcn-space/blocks/hero/hero";
+import { AvatarList } from "@/components/blocks/hero/hero";
 
 export const avatarList: AvatarList[] = [
   {

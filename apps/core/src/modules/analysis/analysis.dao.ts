@@ -23,6 +23,7 @@ export const saveReviewDAO = async ({
       resume,
       selfDescription,
       jobDescription,
+      title: reviewByAI.title,
       matchScore: reviewByAI.matchScore,
       technicalQuestions: {
         create: reviewByAI.technicalQuestions,

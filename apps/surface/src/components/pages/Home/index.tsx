@@ -1,16 +1,16 @@
-import HeroSection from "@/components/shadcn-space/blocks/hero/hero";
-import Header from "@/components/shadcn-space/blocks/hero/header";
-import BrandSlider from "@/components/shadcn-space/blocks/hero/brand-slider";
+import HeroSection from "@/components/blocks/hero/hero";
+import Header from "@/components/blocks/hero/header";
+import BrandSlider from "@/components/blocks/hero/brand-slider";
 import { navigationData } from "@/lib/header.data";
 import { brandList } from "@/lib/brand-list.data";
 import { avatarList } from "@/lib/hero.data";
-import FeatureSection from "../../shadcn-space/blocks/feature";
-import AboutAndStats from "../../shadcn-space/blocks/about-us";
-import Testimonials from "../../shadcn-space/blocks/testimonial/testimonial";
-import Pricing from "../../shadcn-space/blocks/pricing/pricing";
-import Faq from "../../shadcn-space/blocks/faq/faq";
-import CTA from "../../shadcn-space/blocks/cta/cta";
-import Footer from "../../shadcn-space/blocks/footer/footer";
+import FeatureSection from "../../blocks/feature";
+import AboutAndStats from "../../blocks/about-us";
+import Testimonials from "../../blocks/testimonial/testimonial";
+import Pricing from "../../blocks/pricing/pricing";
+import Faq from "../../blocks/faq/faq";
+import CTA from "../../blocks/cta/cta";
+import Footer from "../../blocks/footer/footer";
 
 export default function HomePage() {
   return (

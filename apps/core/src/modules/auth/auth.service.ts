@@ -33,7 +33,7 @@ export const generateAccessToken = (user: {
   email: string;
 }): string => {
   return jwt.sign({ id: user.id, email: user.email }, ACCESS_TOKEN_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "7d",
   });
 };
 
@@ -42,7 +42,7 @@ export const generateAccessToken = (user: {
  */
 export const generateRefreshToken = (user: { id: string }): string => {
   return jwt.sign({ id: user.id }, REFRESH_TOKEN_SECRET, {
-    expiresIn: "7d",
+    expiresIn: "30d",
   });
 };
 

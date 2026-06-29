@@ -1,4 +1,4 @@
-import { NavigationSection } from "@/components/shadcn-space/blocks/hero/header";
+import { NavigationSection } from "@/components/blocks/hero/header";
 
 export const navigationData: NavigationSection[] = [
   {

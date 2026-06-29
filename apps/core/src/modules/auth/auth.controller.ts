@@ -26,12 +26,12 @@ const cookieOptions: CookieOptions = {
 
 const accessTokenOptions: CookieOptions = {
   ...cookieOptions,
-  maxAge: 15 * 60 * 1000, // 15 minutes
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
 const refreshTokenOptions: CookieOptions = {
   ...cookieOptions,
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
 };
 
 /**

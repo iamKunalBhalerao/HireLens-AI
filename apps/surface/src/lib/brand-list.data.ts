@@ -1,4 +1,4 @@
-import { BrandList } from "@/components/shadcn-space/blocks/hero/brand-slider";
+import { BrandList } from "@/components/blocks/hero/brand-slider";
 
 export const brandList: BrandList[] = [
   {

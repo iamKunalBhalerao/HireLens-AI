@@ -27,6 +27,7 @@ model Review {
   selfDescription String?
   jobDescription  String
 
+  title               String @default("Untitled Review")
   matchScore          Float
   technicalQuestions  TechnicalQuestion[]
   behavioralQuestions BehavioralQuestion[]
