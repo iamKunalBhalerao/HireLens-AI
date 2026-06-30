@@ -16,10 +16,18 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Icon } from "@iconify/react";
-import { Menu, Settings, User, X } from "lucide-react";
-import Logo from "@/assets/logo/logo";
+import {
+  LogOut,
+  Menu,
+  MessageSquareText,
+  Settings,
+  User,
+  X,
+} from "lucide-react";
 import { motion } from "motion/react";
 import { useAuthStore } from "@/store/auth.store";
+import { useAuth } from "@/hooks/auth.hook";
+import { useRouter } from "next/navigation";
 import UserProfile from "@/components/userProfile";
 import {
   DropdownMenu,
@@ -31,6 +39,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import SignOutDialog from "@/components/logout-dialog";
 import CollaborateButton from "@/components/collaboration-button";
+import { Logo } from "@/components/logo";
+import Link from "next/link";
 
 export type NavigationSection = {
   title: string;
@@ -45,12 +55,19 @@ type HeaderProps = {
 
 const Header = ({ navigationData, className }: HeaderProps) => {
   const { user, isAuthenticated } = useAuthStore();
+  const { handleSignOut } = useAuth();
+  const router = useRouter();
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [showSignOutDialog, setShowSignOutDialog] = useState(false);
 
-  if (!user) {
-  }
+  const handleSignOutConfirm = async () => {
+    setShowSignOutDialog(false);
+    await handleSignOut();
+    router.push("/");
+    router.refresh();
+  };
 
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 50);
@@ -132,10 +149,16 @@ const Header = ({ navigationData, className }: HeaderProps) => {
         )}
       >
         {/* Logo */}
-        <div>
-          <a href="#home">
-            <Logo className="gap-3" />
-          </a>
+        <div className="flex items-center gap-2">
+          <Link
+            href="#home"
+            className="flex items-center gap-2 hover:cursor-pointer"
+          >
+            <Logo className="h-8 w-8 text-foreground" />
+            <span className="font-semibold tracking-tight text-xl">
+              HireLens AI
+            </span>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -169,22 +192,28 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
         {/* Desktop CTA */}
         <div className="flex gap-4">
-          {isAuthenticated ? (
+          {isAuthenticated && user ? (
             <DropdownMenu>
               <DropdownMenuTrigger className="rounded-full focus:outline-hidden focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                <UserProfile userName={user!.userName} email={user!.email} />
+                <UserProfile userName={user.userName} email={user.email} />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => router.push("/profile")}>
                   <User className="h-4 w-4" /> Profile
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => router.push("/settings")}>
                   <Settings className="h-4 w-4" /> Settings
                 </DropdownMenuItem>
-                <DropdownMenuItem variant="destructive">
-                  <SignOutDialog />
+                <DropdownMenuItem onClick={() => router.push("/review")}>
+                  <MessageSquareText className="h-4 w-4" /> All Reviews
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  variant="destructive"
+                  onSelect={() => setShowSignOutDialog(true)}
+                >
+                  <LogOut className="h-4 w-4" /> SignOut
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -207,9 +236,16 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                 className="w-full sm:w-96 p-0 border-l-0"
               >
                 <div className="flex items-center justify-between p-6">
-                  <a href="#home" onClick={() => setIsOpen(false)}>
-                    <Logo className="gap-2" />
-                  </a>
+                  <Link
+                    href="#home"
+                    className="flex items-center gap-2 hover:cursor-pointer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Logo className="h-8 w-8 text-foreground" />
+                    <span className="font-semibold tracking-tight text-xl">
+                      HireLens AI
+                    </span>
+                  </Link>
                   <SheetClose id="mobile-menu-close" asChild>
                     <button className="rounded-full border border-border p-2.5 block cursor-pointer">
                       <X width={16} height={16} />
@@ -259,25 +295,38 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                     </NavigationMenu>
 
                     <div className="w-fit">
-                      {isAuthenticated ? (
+                      {isAuthenticated && user ? (
                         <DropdownMenu>
                           <DropdownMenuTrigger className="rounded-full focus:outline-hidden focus:ring-2 focus:ring-primary focus:ring-offset-2">
                             <UserProfile
-                              userName={user!.userName}
-                              email={user!.email}
+                              userName={user.userName}
+                              email={user.email}
                             />
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() => router.push("/user/profile")}
+                            >
                               <User className="h-4 w-4" /> Profile
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() => router.push("/user/settings")}
+                            >
                               <Settings className="h-4 w-4" /> Settings
                             </DropdownMenuItem>
-                            <DropdownMenuItem variant="destructive">
-                              <SignOutDialog />
+                            <DropdownMenuItem
+                              onClick={() => router.push("/review")}
+                            >
+                              <MessageSquareText className="h-4 w-4" /> All
+                              Reviews
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              variant="destructive"
+                              onSelect={() => setShowSignOutDialog(true)}
+                            >
+                              <LogOut className="h-4 w-4" /> SignOut
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -315,6 +364,12 @@ const Header = ({ navigationData, className }: HeaderProps) => {
           </div>
         </div>
       </div>
+
+      <SignOutDialog
+        open={showSignOutDialog}
+        onOpenChange={setShowSignOutDialog}
+        onConfirm={handleSignOutConfirm}
+      />
     </motion.header>
   );
 };

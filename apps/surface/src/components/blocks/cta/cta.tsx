@@ -31,17 +31,16 @@ const CTA = ({ className }: CTAProps) => {
             >
               <div className="flex flex-col gap-3 items-center text-center">
                 <h2 className="text-3xl md:text-5xl font-medium">
-                  Innovative solutions for bold brands
+                  Stop applying blindly. Scan your eligibility now.
                 </h2>
                 <p className="max-w-2xl mx-auto">
-                  Looking to elevate your brand? We craft immersive experiences
-                  that captivate, engage, and make your business unforgettable
-                  in every interaction.
+                  Upload your resume and copy the job description to find out if you qualify instantly.
+                  Get ready to land your next interview.
                 </p>
               </div>
               <Button className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden hover:bg-primary/80 cursor-pointer">
                 <span className="relative z-10 transition-all duration-500">
-                  Let's craft together
+                  Upload Your Resume
                 </span>
                 <div className="absolute right-1 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
                   <ArrowUpRight size={16} />

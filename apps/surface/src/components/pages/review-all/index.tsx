@@ -18,11 +18,17 @@ import {
   ArrowUpDown,
   Loader2,
   CheckCircle2,
-  FileText
+  FileText,
 } from "lucide-react";
 import { getAllReviews, deleteReviewById } from "@/services/analyze.service";
 import { ReviewResponse } from "@/types/analyze.api.types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Logo } from "@/components/logo";
@@ -96,10 +102,14 @@ export default function ReviewAllPageContent() {
     .filter((r) => r.title.toLowerCase().includes(searchQuery.toLowerCase()))
     .sort((a, b) => {
       if (sortBy === "newest") {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
       }
       if (sortBy === "oldest") {
-        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        return (
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
       }
       if (sortBy === "highest") {
         return b.matchScore - a.matchScore;
@@ -155,19 +165,25 @@ export default function ReviewAllPageContent() {
       <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link
-            href="/analyze"
+            href="/"
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-            <span className="text-sm font-medium">Back to Analyse</span>
+            <span className="text-sm font-medium">Back to Home</span>
           </Link>
           <div className="flex items-center gap-2">
             <Logo className="h-5 w-5 text-foreground" />
-            <span className="font-semibold tracking-tight text-sm">HireLens AI</span>
+            <span className="font-semibold tracking-tight text-sm">
+              HireLens AI
+            </span>
           </div>
           <div className="w-24 flex justify-end">
             <Link href="/analyze">
-              <Button variant="outline" size="sm" className="h-8 text-xs gap-1.5 cursor-pointer">
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8 text-xs gap-1.5 cursor-pointer"
+              >
                 <Sparkles className="h-3 w-3" /> New
               </Button>
             </Link>
@@ -177,11 +193,13 @@ export default function ReviewAllPageContent() {
 
       {/* Main Content Container */}
       <main className="flex-1 max-w-4xl w-full mx-auto p-6 md:p-8 space-y-8">
-        
         {/* Title Banner */}
         <div className="border-b border-border/40 pb-6 space-y-2">
           <div className="flex items-center gap-2">
-            <Badge variant="default" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/10">
+            <Badge
+              variant="default"
+              className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/10"
+            >
               Evaluations Log
             </Badge>
           </div>
@@ -189,7 +207,8 @@ export default function ReviewAllPageContent() {
             Your Job Reviews
           </h1>
           <p className="text-sm md:text-base text-muted-foreground">
-            Manage, filter, and access all your past compatibility reports and study roadmaps.
+            Manage, filter, and access all your past compatibility reports and
+            study roadmaps.
           </p>
         </div>
 
@@ -240,7 +259,9 @@ export default function ReviewAllPageContent() {
                   <Briefcase className="h-6 w-6" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-semibold text-foreground text-[15px]">No Job Reviews Found</h3>
+                  <h3 className="font-semibold text-foreground text-[15px]">
+                    No Job Reviews Found
+                  </h3>
                   <p className="text-xs text-muted-foreground max-w-sm">
                     {searchQuery
                       ? "Try refiltering your search or check for typos."
@@ -249,7 +270,10 @@ export default function ReviewAllPageContent() {
                 </div>
                 {!searchQuery && (
                   <Link href="/analyze">
-                    <Button variant="default" className="mt-2 text-xs gap-1.5 cursor-pointer">
+                    <Button
+                      variant="default"
+                      className="mt-2 text-xs gap-1.5 cursor-pointer"
+                    >
                       <Sparkles className="h-3.5 w-3.5" /> Analyze First Job
                     </Button>
                   </Link>
@@ -260,15 +284,17 @@ export default function ReviewAllPageContent() {
                 <p className="text-[11px] font-bold text-muted-foreground tracking-wider uppercase pl-1">
                   Analyses logs ({filteredReviews.length})
                 </p>
-                
+
                 <div className="space-y-3">
                   {filteredReviews.map((review) => {
-                    const formattedDate = new Date(review.createdAt).toLocaleDateString("en-US", {
+                    const formattedDate = new Date(
+                      review.createdAt,
+                    ).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
                     });
-                    
+
                     const isDeletingConfirm = deleteConfirmId === review.id;
 
                     return (
@@ -276,7 +302,9 @@ export default function ReviewAllPageContent() {
                         key={review.id}
                         className={cn(
                           "relative border border-border/50 bg-card/30 hover:bg-card/50 transition-all rounded-2xl overflow-hidden group/card shadow-xs",
-                          isDeletingConfirm ? "border-destructive/30 bg-destructive/2 dark:bg-destructive/3" : ""
+                          isDeletingConfirm
+                            ? "border-destructive/30 bg-destructive/2 dark:bg-destructive/3"
+                            : "",
                         )}
                       >
                         {/* Overlay confirm delete state */}
@@ -285,8 +313,13 @@ export default function ReviewAllPageContent() {
                             <div className="flex items-center gap-3">
                               <AlertTriangle className="h-5 w-5 text-destructive shrink-0" />
                               <div>
-                                <p className="text-sm font-semibold text-foreground">Delete this evaluation?</p>
-                                <p className="text-xs text-muted-foreground">This will permanently remove the score and roadmap report.</p>
+                                <p className="text-sm font-semibold text-foreground">
+                                  Delete this evaluation?
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  This will permanently remove the score and
+                                  roadmap report.
+                                </p>
                               </div>
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
@@ -297,7 +330,11 @@ export default function ReviewAllPageContent() {
                                 onClick={() => handleDelete(review.id)}
                                 className="h-8 text-xs cursor-pointer"
                               >
-                                {deleting ? <Loader2 className="h-3 w-3 animate-spin" /> : "Delete"}
+                                {deleting ? (
+                                  <Loader2 className="h-3 w-3 animate-spin" />
+                                ) : (
+                                  "Delete"
+                                )}
                               </Button>
                               <Button
                                 size="sm"
@@ -312,22 +349,30 @@ export default function ReviewAllPageContent() {
                           </div>
                         ) : (
                           <div className="p-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                            
                             {/* Left details */}
-                            <Link href={`/review/${review.id}`} className="flex-1 flex items-start gap-4 cursor-pointer outline-none">
+                            <Link
+                              href={`/review/${review.id}`}
+                              className="flex-1 flex items-start gap-4 cursor-pointer outline-none"
+                            >
                               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary border border-primary/10">
                                 <FileText className="h-5 w-5" />
                               </div>
                               <div className="space-y-1.5 pr-2">
                                 <h3 className="font-semibold text-foreground text-sm sm:text-base leading-snug group-hover/card:text-primary transition-colors">
-                                  {review.title || "Software Development Engineer (SDE) Intern"}
+                                  {review.title ||
+                                    "Software Development Engineer (SDE) Intern"}
                                 </h3>
                                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
                                   <span className="flex items-center gap-1.5">
-                                    <Calendar className="h-3.5 w-3.5 text-muted-foreground/80" /> {formattedDate}
+                                    <Calendar className="h-3.5 w-3.5 text-muted-foreground/80" />{" "}
+                                    {formattedDate}
                                   </span>
                                   <span className="flex items-center gap-1.5">
-                                    <Layers className="h-3.5 w-3.5 text-muted-foreground/80" /> {review.technicalQuestions?.length ?? 0} Tech &bull; {review.behavioralQuestions?.length ?? 0} Behav.
+                                    <Layers className="h-3.5 w-3.5 text-muted-foreground/80" />{" "}
+                                    {review.technicalQuestions?.length ?? 0}{" "}
+                                    Tech &bull;{" "}
+                                    {review.behavioralQuestions?.length ?? 0}{" "}
+                                    Behav.
                                   </span>
                                 </div>
                               </div>
@@ -335,10 +380,17 @@ export default function ReviewAllPageContent() {
 
                             {/* Right Score and Action */}
                             <div className="flex items-center justify-between sm:justify-end gap-4 border-t sm:border-t-0 border-border/30 pt-3 sm:pt-0 shrink-0">
-                              
                               {/* Match Score Badge */}
-                              <Link href={`/review/${review.id}`} className="cursor-pointer outline-none">
-                                <Badge className={cn("text-xs font-bold font-mono px-3 py-1 rounded-full border shadow-2xs", getScoreDetails(review.matchScore))}>
+                              <Link
+                                href={`/review/${review.id}`}
+                                className="cursor-pointer outline-none"
+                              >
+                                <Badge
+                                  className={cn(
+                                    "text-xs font-bold font-mono px-3 py-1 rounded-full border shadow-2xs",
+                                    getScoreDetails(review.matchScore),
+                                  )}
+                                >
                                   {review.matchScore}% Match
                                 </Badge>
                               </Link>
@@ -352,16 +404,17 @@ export default function ReviewAllPageContent() {
                                 >
                                   <Trash2 className="h-4 w-4" />
                                 </button>
-                                
-                                <Link href={`/review/${review.id}`} className="outline-none">
+
+                                <Link
+                                  href={`/review/${review.id}`}
+                                  className="outline-none"
+                                >
                                   <div className="h-8 w-8 rounded-lg bg-secondary/80 flex items-center justify-center text-foreground border border-border/50 group-hover/card:bg-primary group-hover/card:text-primary-foreground group-hover/card:border-primary transition-all duration-300">
                                     <ArrowRight className="h-4 w-4 transition-transform group-hover/card:translate-x-0.5" />
                                   </div>
                                 </Link>
                               </div>
-
                             </div>
-
                           </div>
                         )}
                       </Card>
@@ -372,7 +425,6 @@ export default function ReviewAllPageContent() {
             )}
           </div>
         )}
-
       </main>
     </div>
   );

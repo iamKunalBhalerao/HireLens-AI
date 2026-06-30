@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { cn } from "@/lib/utils";
 import { LucideIcon, Plus } from "lucide-react";
@@ -36,7 +36,7 @@ const AnimatedCounter = ({
   });
 
   const displayValue = useTransform(springValue, (current) =>
-    Math.round(current)
+    Math.round(current),
   );
 
   useEffect(() => {
@@ -73,8 +73,7 @@ const AboutUs = ({
             className="flex flex-col items-center justify-center gap-4"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground text-center tracking-tight">
-              Crafting exceptional, well experienced & technology driven
-              strategies to drive impactful results with
+              Empowering job seekers and students with instant eligibility checking, resume parsing, and career readiness using
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-4">
               {aboutusData.map((item, index) => (
@@ -82,14 +81,14 @@ const AboutUs = ({
                   key={index}
                   className={cn(
                     "flex items-center gap-3 px-6 py-2 rounded-full",
-                    item.color
+                    item.color,
                   )}
                 >
                   <item.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                   <span
                     className={cn(
                       "text-4xl font-normal",
-                      instrumentSerif.className
+                      instrumentSerif.className,
                     )}
                   >
                     {item.title}
@@ -116,10 +115,7 @@ const AboutUs = ({
                       strokeWidth={3.5}
                       className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12"
                     />
-                    <AnimatedCounter
-                      value={value.count}
-                      isInView={isInView}
-                    />
+                    <AnimatedCounter value={value.count} isInView={isInView} />
                   </div>
                   <p className="text-base font-normal text-muted-foreground text-center">
                     {value.title}

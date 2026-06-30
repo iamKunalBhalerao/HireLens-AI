@@ -19,30 +19,29 @@ type PricingPlan = {
 const pricingData: PricingPlan[] = [
   {
     plan_bg_color: "bg-blue-500/10",
-    plan_name: "Starter",
-    plan_descp: "For companies who need design support. One request at a time",
-    plan_price: 2500,
+    plan_name: "Basic",
+    plan_descp: "Perfect for students starting out. Check compatibility for up to 5 jobs/month.",
+    plan_price: 0,
     plan_feature: [
-      "Design Updates",
-      "Mid-level Designer",
-      "SEO Optimization",
-      "Monthly Analytics",
-      "2x Calls Per Month",
-      "License free Assets",
+      "5 Job Eligibility Scans / month",
+      "Basic Skills Gap Analysis",
+      "Resume Word Cloud",
+      "Community Support",
+      "Standard Matching Speed",
     ],
   },
   {
     plan_bg_color: "bg-teal-400/20",
     plan_name: "Pro",
-    plan_descp: "2x the speed. Great for an MVP, Web App or complex problem",
-    plan_price: 3800,
+    plan_descp: "For active job seekers applying to multiple positions.",
+    plan_price: 15,
     plan_feature: [
-      "Everything on Starter",
-      "Developer Updates",
-      "Digital Marketing",
-      "Weekly Analytics",
-      "8x Calls Per Month",
-      "Premium Assets",
+      "Unlimited Eligibility Scans",
+      "Detailed ATS Optimization Report",
+      "Unlimited Custom Mock Assessments",
+      "Priority AI Processing",
+      "Smart Skill Recommendation Engine",
+      "24/7 Priority Support",
     ],
   },
 ];
@@ -78,9 +77,9 @@ const Pricing = () => {
               Pricing
             </Badge>
             {/* Heading */}
-            <div className="max-w-3xs sm:max-w-md mx-auto text-center">
+            <div className="max-w-xs sm:max-w-md mx-auto text-center">
               <h2 className="text-foreground text-3xl sm:text-5xl font-medium">
-                Pick the plan that fits your start-up
+                Choose the plan that fits your career goals
               </h2>
             </div>
           </div>

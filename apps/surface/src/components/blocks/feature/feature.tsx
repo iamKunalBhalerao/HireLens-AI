@@ -34,15 +34,15 @@ const Feature = ({ featureData }: { featureData: Features }) => {
                   Features
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-semibold">
-                  Leading with innovation
+                  Job search, optimized
                 </h2>
                 <p className="text-lg font-normal text-muted-foreground">
-                  We're west coast change-makers in a complex world, crafting
-                  purposeful and powerful brands with fluidity
+                  HireLens AI takes the guesswork out of job applications by evaluating your
+                  resume against real-world roles so you know exactly where you stand.
                 </p>
               </div>
               <Button className="rounded-full px-5 py-2.5 shadow-xs h-auto cursor-pointer">
-                <a href="#">Browse more block</a>
+                <a href="#about">See how it works</a>
               </Button>
             </motion.div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-6">
@@ -67,17 +67,15 @@ const Feature = ({ featureData }: { featureData: Features }) => {
                       </AvatarFallback>
                     </Avatar>
                     <h3 className="text-xl sm:text-2xl font-medium">
-                      “Before Shadcn Space, we stitched UIs together from random
-                      snippets. Now we ship polished interfaces in hours for
-                      frontend.”
+                      “Before HireLens AI, I was applying to dozens of jobs blindly. The eligibility scoring showed me exactly where my resume fell short. After updating my skills, I landed an interview in a week!”
                     </h3>
                   </CardContent>
                   <CardFooter className="bg-card border-none w-full px-6 sm:px-8 py-0 flex flex-col items-start gap-0.5">
                     <p className="text-sm font-medium text-primary">
-                      JOHNATHAN DOE
+                      ALEX RIVERA
                     </p>
                     <span className="text-xs font-normal text-muted-foreground uppercase">
-                      HEAD OF FINANCE @SHADCN SPACE
+                      GRADUATE SOFTWARE ENGINEER @ GOOGLE
                     </span>
                   </CardFooter>
                 </Card>

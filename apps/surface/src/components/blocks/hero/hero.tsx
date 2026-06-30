@@ -33,11 +33,11 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="lg:text-8xl md:text-7xl text-5xl font-medium leading-14 md:leading-20 lg:leading-24"
                 >
-                  Building bold brands with{" "}
+                  Are you eligible for your{" "}
                   <span
                     className={`${instrumentSerif.className} tracking-tight`}
                   >
-                    thoughtful design
+                    dream job?
                   </span>
                 </motion.h1>
                 <motion.p
@@ -46,9 +46,8 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
                   className="text-base font-normal max-w-2xl text-muted-foreground"
                 >
-                  At shadcn space, we help small startups tackle the
-                  world&apos;s biggest challenges with tailored solutions,
-                  guiding you from strategy to success in a competitive market.
+                  HireLens AI matches your resume with real job descriptions, scores your
+                  eligibility objectively, and tells you exactly what skills you need to land the job.
                 </motion.p>
               </div>
               <motion.div
@@ -91,7 +90,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                       ))}
                     </div>
                     <p className="sm:text-sm text-xs font-normal text-muted-foreground">
-                      Trusted by 1000+ clients
+                      Trusted by 10,000+ job seekers
                     </p>
                   </div>
                 </div>

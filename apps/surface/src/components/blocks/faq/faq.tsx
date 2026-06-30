@@ -10,29 +10,29 @@ import { cn } from "@/lib/utils";
 
 const FAQ_DATA = [
   {
-    question: "What services does Shadcn Space offer?",
+    question: "How does HireLens AI check my job eligibility?",
     answer:
-      "We offer a wide range of services including web development, app development, and digital marketing.",
+      "We compare your resume's skills, experience, and projects directly against the job description. Our AI analyzes semantically—meaning it checks for conceptual matching, not just keyword counts.",
   },
   {
-    question: "How long does a typical project take?",
+    question: "Can I use it to optimize my resume for ATS?",
     answer:
-      "The time it takes to complete a project depends on the complexity of the project and the scope of the work.",
+      "Yes! We show you the exact keywords and skills required by the job that are missing from your resume, helping you pass automated ATS screeners.",
   },
   {
-    question: "How is pricing structured at Awake Agency?",
+    question: "Is HireLens AI free for students?",
     answer:
-      "Pricing is based on the complexity of the project and the scope of the work.",
+      "Our Basic plan is 100% free and includes 5 compatibility scans a month. We also offer a highly affordable Pro plan for active job seekers needing unlimited scans and mock assessments.",
   },
   {
-    question: "Do you offer ongoing support after project completion?",
+    question: "How do mock assessments work?",
     answer:
-      "Absolutely! We offer comprehensive post-launch support to ensure a seamless implementation and provide ongoing maintenance packages tailored to clients who need regular updates or technical assistance. Our commitment doesn’t end at launch — we’re here to help you every step of the way.",
+      "Once you run an eligibility scan, HireLens AI can generate mock technical or behavioral interview questions based on the gaps in your profile to help you practice.",
   },
   {
-    question: "How often will I receive updates on my project?",
+    question: "Is my resume data safe?",
     answer:
-      "We provide updates on a regular basis to ensure that your project is running smoothly and that you are aware of any changes or updates to the project.",
+      "Absolutely. We encrypt all uploads and never sell your profile data to third parties. Your resume is used solely to generate your compatibility reports.",
   },
 ];
 
@@ -52,7 +52,11 @@ export default function Faq() {
           </h2>
         </div>
         <div>
-          <Accordion type="single" collapsible className="w-full flex flex-col gap-6">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full flex flex-col gap-6"
+          >
             {FAQ_DATA.map((faq, index) => (
               <AccordionItem
                 key={`item-${index}`}

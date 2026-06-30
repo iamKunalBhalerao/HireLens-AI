@@ -5,33 +5,33 @@ import { Target, WandSparkles, Zap } from "lucide-react";
 const aboutusData = [
   {
     icon: WandSparkles,
-    title: "Creativity",
+    title: "Insights",
     color: "bg-blue-500/10 text-blue-500",
   },
   {
     icon: Zap,
-    title: "Innovation",
+    title: "Practice",
     color: "bg-teal-400/10 text-teal-400",
   },
   {
     icon: Target,
-    title: "Strategy",
+    title: "Success",
     color: "bg-orange-400/10 text-orange-400",
   },
 ];
 
 const statisticsCounter = [
   {
-    title: "Total Projects Completed",
-    count: 40,
+    title: "k+ Eligibility Scans Run",
+    count: 100,
   },
   {
-    title: "Years of Experience",
+    title: "k+ Job Matches Found",
     count: 15,
   },
   {
-    title: "Design Awards",
-    count: 12,
+    title: "% Increase in Interview Invites",
+    count: 82,
   },
 ];
 

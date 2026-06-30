@@ -40,21 +40,19 @@ const Testimonials = () => {
             >
               <Card className="bg-[url('https://images.shadcnspace.com/assets/backgrounds/testimonials-userBg-01.webp')] object-cover bg-center bg-cover bg-no-repeat border border-border h-full w-full md:min-h-96 p-8 md:pe-16 rounded-2xl">
                 <CardContent className="flex flex-col items-start justify-between gap-24 p-0 h-full">
-                   <p className="text-white/70 text-base font-normal">
+                  <p className="text-white/70 text-base font-normal">
                     Customer stories
                   </p>
                   <div className="flex flex-col gap-6">
                     <p className="text-white text-xl lg:text-2xl font-medium">
-                      Shadn Space expertise transformed my vision into success
-                      with creativity, precision, and a deep understanding of my
-                      goals.
+                      HireLens AI gave me the confidence to apply. The matching score was spot on, and the skill gap analysis helped me prepare perfectly for my interviews.
                     </p>
                     <div>
                       <p className="text-white text-base font-medium">
-                        Anaya Shah
+                        Emily Watson
                       </p>
                       <p className="text-white/70 text-sm font-normal">
-                        Founder of Chipsland
+                        Computer Science Graduate
                       </p>
                     </div>
                   </div>
@@ -74,10 +72,10 @@ const Testimonials = () => {
                   </p>
                   <div className="flex flex-col items-start gap-4">
                     <p className="text-white text-4xl lg:text-5xl font-medium">
-                      91%
+                      92%
                     </p>
                     <p className="text-white text-xl lg:text-2xl font-medium">
-                      clients recommend our design services.”
+                      of students report higher interview callback rates.”
                     </p>
                   </div>
                 </CardContent>
@@ -96,14 +94,13 @@ const Testimonials = () => {
                       Customer stories
                     </p>
                     <p className="text-white text-xl lg:text-2xl font-medium">
-                      Their creativity and attention to detail transformed our
-                      brand completely!
+                      I had no idea why my resume wasn't getting responses. HireLens AI pointed out missing keywords for my target roles instantly!
                     </p>
                   </div>
                   <img
                     src="https://images.shadcnspace.com/assets/backgrounds/testimonials-bg-01.webp"
                     alt="background-img"
-                    width={'100%'}
+                    width={"100%"}
                     height={220}
                   />
                 </CardContent>
@@ -122,17 +119,15 @@ const Testimonials = () => {
                       Customer stories
                     </p>
                     <p className="text-card-foreground text-xl lg:text-2xl font-medium">
-                      “Shadcn Space Agency brought our ideas to life with
-                      exceptional creativity and precision, exceeding
-                      expectations.”
+                      “Integrating HireLens AI into my job search was a game changer. I stopped wasting time on mismatched listings and focused only on roles where I had high eligibility.”
                     </p>
                   </div>
                   <div>
                     <p className="text-card-foreground text-base font-medium">
-                      Sarah Mitchell
+                      Devon Miller
                     </p>
                     <p className="text-muted-foreground text-sm font-normal">
-                      Marketing Head at TalentConnect
+                      Associate Product Manager
                     </p>
                   </div>
                 </CardContent>

@@ -26,7 +26,7 @@ export const useAuth = () => {
     try {
       setLoading(true);
       const data = await SignUp({ email, password, userName });
-      setAuth(data.data.user);
+      setAuth(data.data);
       setLoading(false);
       return data;
     } catch (error) {
@@ -97,7 +97,7 @@ export const useAuth = () => {
     const getAndSetUser = async () => {
       try {
         const data = await getCurrentUser();
-        setAuth(data.data.user);
+        setAuth(data.data);
       } catch (error) {
         signOut();
       } finally {

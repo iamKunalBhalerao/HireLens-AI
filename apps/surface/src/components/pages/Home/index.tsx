@@ -18,7 +18,7 @@ export default function HomePage() {
       <Header navigationData={navigationData} />
       <main>
         <HeroSection avatarList={avatarList} />
-        <BrandSlider brandList={brandList} />
+        {/* <BrandSlider brandList={brandList} /> */}
         <FeatureSection />
         <AboutAndStats />
         <Testimonials />

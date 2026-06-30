@@ -1,27 +1,27 @@
 "use client";
 import Feature from "@/components/blocks/feature/feature";
-import { ArrowDownUp, BellRing, RotateCw, Tag } from "lucide-react";
+import { Sparkles, Award, Scale, Layers } from "lucide-react";
 
 const featureData = [
   {
-    icon: ArrowDownUp,
+    icon: Sparkles,
     content:
-      "Instantly sync and update your documentation across teams without manual rework.",
+      "Upload your resume and get instant insights into how well your profile matches top industry roles.",
   },
   {
-    icon: BellRing,
+    icon: Award,
     content:
-      "Get real-time alerts when docs are updated, reviewed, or need your attention.",
+      "See a detailed compatibility percentage and find gaps between your skills and job requirements.",
   },
   {
-    icon: RotateCw,
+    icon: Scale,
     content:
-      "Automatically keep your documentation up to date with seamless content refreshes.",
+      "Take AI-generated practice assessments tailored to actual job roles to test your readiness.",
   },
   {
-    icon: Tag,
+    icon: Layers,
     content:
-      "Organize your docs with smart tags for faster search and better discoverability.",
+      "Get structural and keyword recommendations to help your resume pass recruiter ATS filters.",
   },
 ];
 
