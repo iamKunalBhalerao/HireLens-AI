@@ -200,7 +200,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => router.push("/profile")}>
+                <DropdownMenuItem onClick={() => router.push("/user/profile")}>
                   <User className="h-4 w-4" /> Profile
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => router.push("/settings")}>

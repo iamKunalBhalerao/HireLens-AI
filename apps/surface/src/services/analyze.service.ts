@@ -2,7 +2,7 @@ import { AnalyzeAPIRequest } from "@/types/analyze.api.types";
 import axios, { AxiosError } from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1`,
   withCredentials: true,
 });
 
@@ -66,6 +66,3 @@ export const deleteReviewById = async (reviewId: string) => {
     return { success: false, message: "Something went wrong" };
   }
 };
-
-
-

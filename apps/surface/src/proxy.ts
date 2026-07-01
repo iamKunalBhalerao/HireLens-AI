@@ -25,15 +25,17 @@ export async function proxy(request: NextRequest) {
   if (accessToken) {
     try {
       // Validate the token with the backend auth/me endpoint
-      const response = await fetch("http://localhost:5000/api/v1/auth/me", {
-        headers: {
-          Cookie: `accessToken=${accessToken}`,
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/auth/me`,
+        {
+          headers: {
+            Cookie: `accessToken=${accessToken}`,
+          },
         },
-      });
+      );
 
       if (response.ok) {
         const body = await response.json();
-        // Checking if response is successful and user data exists
         if (body && (body.success || body.data)) {
           isValidUser = true;
         }
@@ -44,18 +46,15 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  // If user is valid and trying to access signin/signup page, redirect to home page
   if (isValidUser && isAuthPage) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // If user is NOT valid and trying to access a protected page (not home and not auth page)
   if (!isValidUser && !isHomePage && !isAuthPage) {
     const loginUrl = new URL("/auth/signin", request.url);
     loginUrl.searchParams.set("from", pathname);
 
     const response = NextResponse.redirect(loginUrl);
-    // Invalidate cookies if they were invalid/expired
     if (accessToken) {
       response.cookies.delete("accessToken");
       response.cookies.delete("refreshToken");
