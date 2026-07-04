@@ -8,9 +8,9 @@
     ".": "./dist/src/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node ./scripts/fix-prisma-imports.mjs",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "prisma generate && node ./scripts/fix-prisma-imports.mjs",
     "prisma:studio": "prisma studio"
   },
   "devDependencies": {
