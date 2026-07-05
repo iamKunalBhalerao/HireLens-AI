@@ -2,7 +2,7 @@ import { AnalyzeAPIRequest } from "@/types/analyze.api.types";
 import axios, { AxiosError } from "axios";
 
 const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1`,
+  baseURL: "/api/v1",
   withCredentials: true,
 });
 

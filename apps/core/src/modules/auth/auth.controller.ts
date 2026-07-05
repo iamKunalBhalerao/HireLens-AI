@@ -21,7 +21,7 @@ interface AuthenticatedRequest extends Request {
 const cookieOptions: CookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
-  sameSite: "none",
+  sameSite: "lax",
 };
 
 const accessTokenOptions: CookieOptions = {

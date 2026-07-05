@@ -24,13 +24,16 @@ export async function proxy(request: NextRequest) {
 
   if (accessToken) {
     try {
+      const cookieHeader = request.headers.get("cookie") ?? "";
+
       // Validate the token with the backend auth/me endpoint
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/auth/me`,
         {
           headers: {
-            Cookie: `accessToken=${accessToken}`,
+            Cookie: cookieHeader,
           },
+          credentials: "include",
         },
       );
 
