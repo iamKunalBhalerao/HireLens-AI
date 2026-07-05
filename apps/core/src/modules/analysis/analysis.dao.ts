@@ -1,4 +1,5 @@
-import { prisma } from "@infra/db";
+import prisma from "../../config/db.config";
+import { Severity } from "@prisma/client";
 
 /**
  * @name saveReviewDAO

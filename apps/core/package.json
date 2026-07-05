@@ -1,12 +1,16 @@
 {
   "name": "core",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/server.js",
+  "description": "Core backend service for HireLens AI",
+  "main": "dist/src/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "pnpm run build && node ./dist/server.js",
+    "start": "pnpm run build && node ./dist/src/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
     "check-types": "tsc --noEmit",
     "lint": "eslint . --ext .ts --max-warnings 0"
   },
@@ -18,7 +22,6 @@
   "author": "Kunal Bhalerao",
   "license": "ISC",
   "devDependencies": {
-    "@infra/db": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/bcrypt": "^6.0.0",
@@ -28,12 +31,16 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.1.0",
     "@types/node": "^22.15.3",
+    "@types/pg": "^8.20.0",
+    "prisma": "^7.8.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "zod": "^4.4.3"
   },
   "dependencies": {
     "@google/genai": "^2.10.0",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -42,6 +49,7 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.2.0",
     "pdf-parse": "^2.4.5",
+    "pg": "^8.22.0",
     "zod-to-json-schema": "^3.25.2"
   }
 }

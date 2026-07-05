@@ -1,7 +1,6 @@
 packages:
   - "apps/*"
   - "packages/*"
-  - "infra/*"
 allowBuilds:
   "@google/genai": true
   "@prisma/engines": true

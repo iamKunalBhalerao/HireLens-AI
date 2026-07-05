@@ -1,4 +1,4 @@
-import { prisma, type User, type Prisma } from "@infra/db";
+import { prisma, type User, type Prisma } from "../../config/db.config";
 
 /**
  * @name findUserById
