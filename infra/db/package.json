@@ -2,15 +2,15 @@
   "name": "@infra/db",
   "version": "0.0.0",
   "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js"
   },
   "scripts": {
-    "build": "tsc && node ./scripts/fix-prisma-imports.mjs",
+    "build": "tsc",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate && node ./scripts/fix-prisma-imports.mjs",
+    "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "@types/pg": "^8.20.0",
     "prisma": "^7.8.0",
     "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

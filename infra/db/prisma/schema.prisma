@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider     = "prisma-client-js"
+  output       = "../generated/prisma"
+  moduleFormat = "esm"
 }
 
 datasource db {
@@ -27,7 +28,7 @@ model Review {
   selfDescription String?
   jobDescription  String
 
-  title               String @default("Untitled Review")
+  title               String               @default("Untitled Review")
   matchScore          Float
   technicalQuestions  TechnicalQuestion[]
   behavioralQuestions BehavioralQuestion[]
