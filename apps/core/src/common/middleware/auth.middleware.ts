@@ -25,16 +25,7 @@ export const authenticate = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    let token = "";
-
-    const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith("Bearer ")) {
-      token = authHeader.split(" ")[1] || "";
-    }
-
-    if (!token && req.cookies) {
-      token = req.cookies.accessToken;
-    }
+    let token = req.cookies.accessToken;
 
     if (!token) {
       throw new UnauthorizedError(
