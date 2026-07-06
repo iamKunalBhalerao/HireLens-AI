@@ -153,8 +153,11 @@ const SignUp = () => {
 
           <p className="mt-5 text-center text-sm">
             Already have an account?
-            <Link className="ml-1 text-muted-foreground underline" href="#">
-              Log in
+            <Link
+              className="ml-1 text-muted-foreground underline"
+              href="/auth/signin"
+            >
+              Sign In
             </Link>
           </p>
         </div>

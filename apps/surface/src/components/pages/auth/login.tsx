@@ -133,13 +133,16 @@ const Login = () => {
           <div className="mt-5 space-y-5">
             <Link
               className="block text-center text-muted-foreground text-sm underline"
-              href="#"
+              href="/auth/forgot-password"
             >
               Forgot your password?
             </Link>
             <p className="text-center text-sm">
               Don&apos;t have an account?
-              <Link className="ml-1 text-muted-foreground underline" href="#">
+              <Link
+                className="ml-1 text-muted-foreground underline"
+                href="/auth/signup"
+              >
                 Create account
               </Link>
             </p>
