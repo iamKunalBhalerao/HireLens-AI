@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/v1/:path*",
-      "destination": "https://hirelens-ai-backend-ij36.onrender.com/api/v1/:path*"
-    }
-  ]
-}
