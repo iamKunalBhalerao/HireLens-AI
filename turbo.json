@@ -7,7 +7,7 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**"]
     },
-    "apps/surface#build": {
+    "surface#build": {
       "env": ["BACKEND_API_URL"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [
