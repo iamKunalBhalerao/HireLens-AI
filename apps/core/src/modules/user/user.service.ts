@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { findUserById, findUserByEmail, updateUser } from "./user.dao";
 import { UpdateUserInput, UserResponse } from "./user.types";
-import { ConflictError, NotFoundError } from "../../common/errors/errors";
+import { ConflictError, NotFoundError, UnauthorizedError } from "../../common/errors/errors";
 
 /**
  * @name formatUserResponse
@@ -66,4 +66,27 @@ export const updateUserProfile = async (
 
   const updatedUser = await updateUser(userId, updateData);
   return formatUserResponse(updatedUser);
+};
+
+/**
+ * @name changeUserPassword
+ * @description Changes the password of a user after validating the old password.
+ */
+export const changeUserPassword = async (
+  userId: string,
+  oldPassword: string,
+  newPassword: string,
+): Promise<void> => {
+  const user = await findUserById(userId);
+  if (!user) {
+    throw new NotFoundError("User not found");
+  }
+
+  const isMatch = await bcrypt.compare(oldPassword, user.password);
+  if (!isMatch) {
+    throw new UnauthorizedError("Old password is incorrect");
+  }
+
+  const hashedNewPassword = await bcrypt.hash(newPassword, 12);
+  await updateUser(userId, { password: hashedNewPassword });
 };
